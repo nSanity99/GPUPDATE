@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__.'/../includes/db_config.php';
+require_once __DIR__.'/../includes/config_db.php';
 
 ob_clean();
 header('Content-Type: application/json');

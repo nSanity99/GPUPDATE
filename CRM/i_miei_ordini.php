@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__.'/includes/db_config.php';
+require_once __DIR__.'/includes/config_db.php';
 
 // --- Blocco Sicurezza ---
 // Controlliamo solo che l'utente sia loggato, non importa il ruolo.
