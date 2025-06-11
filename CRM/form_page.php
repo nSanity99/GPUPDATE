@@ -16,7 +16,7 @@ $id_utente_richiedente = $_SESSION['user_id'];
 // Opzioni per i dropdown
 $centri_di_costo = ["CCNord", "Contact Centre Sud", "CGM", "Edil Eboli", "Elimar", "Il Tulipano", "Lac San Luca", "La Nona Musa", "San Luca Hotel", "San Pio", "Tenuta Elisa"];
 sort($centri_di_costo);
-$unita_di_misura = ["Pezzo", "Cartone", "Scatolo"];
+$unita_di_misura = ["Pezzo", "Cartone", "Scatolo", "Blister", "Risma", "Busta"];
 
 // ## PREPARAZIONE DATI OTTIMIZZATA PER RICERCA E DROPDOWN ##
 $catalogo_flat = [];
