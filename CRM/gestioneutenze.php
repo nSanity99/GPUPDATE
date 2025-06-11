@@ -46,14 +46,23 @@ if ($conn_gu->connect_error) {
     $db_error_message = "Impossibile caricare i dati: errore di connessione al database.";
 } else {
     $sql_users = "SELECT id, username, email, nome, ruolo, gruppo_lavoro, data_creazione FROM utenti ORDER BY username ASC";
-    $result_users = $conn_gu->query($sql_users);
-    if ($result_users) {
-        while ($row = $result_users->fetch_assoc()) { $users_list[] = $row; }
-        $result_users->free();
-    } else {
-        error_log("[gestioneutenze.php] Errore query lista utenti: " . $conn_gu->error);
-        $db_error_message = "Errore nel caricamento della lista utenti.";
-    }
+$result_users = $conn_gu->query($sql_users);
+if ($result_users) {
+    while ($row = $result_users->fetch_assoc()) { $users_list[] = $row; }
+    $result_users->free();
+} else {
+    $sql_error = $conn_gu->error;
+    error_log("[gestioneutenze.php] Errore query lista utenti: " . $sql_error);
+    
+    // Debug a schermo SOLO per sviluppo
+    echo "<div style='padding:12px; margin:15px 0; background:#f8d7da; color:#842029; border:1px solid #f5c2c7;'>
+        <strong>Errore SQL:</strong> " . htmlspecialchars($sql_error) . "<br>
+        <strong>Query:</strong> " . htmlspecialchars($sql_users) . "
+    </div>";
+    
+    $db_error_message = "Errore nel caricamento della lista utenti.";
+}
+
 
     if ($action === 'edit' && isset($_GET['id'])) {
         $user_id_to_edit = intval($_GET['id']);
@@ -248,7 +257,7 @@ if ($action === 'list_feedback' || strpos($action, 'user_') === 0) { // user_cre
                                     <td><?php echo htmlspecialchars($user['gruppo_lavoro'] ?? '-'); ?></td>
                                     <td><?php echo htmlspecialchars(date('d/m/Y H:i', strtotime($user['data_creazione']))); ?></td>
                                     <td class="actions-cell">
-                                        <a href="gestioneutenze.php?action=edit&id=<?php echo $user['id']; ?>#user-form-anchor" class="admin-button secondary">Modifica</a>
+                                        <a href="dashboard_actions.php<?php echo $user['id']; ?>#user-form-anchor" class="admin-button secondary">Modifica</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

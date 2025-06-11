@@ -110,7 +110,7 @@ $user_role_display = htmlspecialchars(isset($_SESSION['ruolo']) ? $_SESSION['ruo
             <div class="tool-cards-grid">
                 <a href="gestioneordini.php" class="tool-card">
                     <div class="tool-card-header"><div class="tool-card-icon">🛒</div><h3 class="tool-card-title">Gestione Ordini</h3></div>
-                    <p class="tool-card-description">Approva o rifiuta le richieste di acquisto inviate.</p>
+                    <p class="tool-card-description">Approva o rifiuta le richieste di acquisto/ordine inviate.</p>
                 </a>
                 <a href="gestione_segnalazione.php" class="tool-card">
                     <div class="tool-card-header"><div class="tool-card-icon">🔔</div><h3 class="tool-card-title">Gestione Segnalazioni</h3></div>
@@ -140,7 +140,7 @@ $user_role_display = htmlspecialchars(isset($_SESSION['ruolo']) ? $_SESSION['ruo
             <div id="main-choices" class="user-dashboard-grid">
                 <div class="category-card" data-target="acquisti-tools">
                     <div class="icon">🛍️</div>
-                    <h2 class="title">Devo fare un acquisto</h2>
+                    <h2 class="title">Devo fare un acquisto/ordine</h2>
                 </div>
                 <div class="category-card" data-target="segnalazioni-tools">
                     <div class="icon">🛠️</div>
@@ -152,7 +152,7 @@ $user_role_display = htmlspecialchars(isset($_SESSION['ruolo']) ? $_SESSION['ruo
                 <a href="#" class="back-button">← Torna alle scelte</a>
                 <div class="tool-cards-grid">
                     <a href="form_page.php" class="tool-card">
-                        <div class="tool-card-header"><div class="tool-card-icon">📦</div><h3 class="tool-card-title">Crea Richiesta Acquisto</h3></div>
+                        <div class="tool-card-header"><div class="tool-card-icon">📦</div><h3 class="tool-card-title">Crea Richiesta Acquisto/Ordine</h3></div>
                         <p class="tool-card-description">Crea una nuova richiesta di acquisto per materiali o servizi.</p>
                     </a>
                     <a href="i_miei_ordini.php" class="tool-card">

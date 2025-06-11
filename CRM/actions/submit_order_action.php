@@ -2,7 +2,10 @@
 session_start();
 
 // Dettagli connessione DB (gli stessi usati negli altri file)
-require_once 'db_config.php';
+$db_host = 'localhost';
+$db_user = 'root';
+$db_pass = '';
+$db_name = 'gruppo_vitolo_db';
 
 // Log per il debug
 ini_set('log_errors', 1);
