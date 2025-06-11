@@ -234,7 +234,7 @@ error_log("--- [{$timestamp}] Accesso a form_page.php UTENTE: " . htmlspecialcha
                 </div>
             <?php endif; ?>
 
-            <form id="main-request-form" action="update_order_action.php" method="POST">
+            <form id="main-request-form" action="actions/update_order_action.php" method="POST">
                 <input type="hidden" name="id_ordine" value="<?php echo $id_ordine; ?>">
                 <div class="form-row">
                     <div class="form-group">
@@ -386,7 +386,7 @@ document.addEventListener('DOMContentLoaded', function() {
             fd.append('nome_prodotto', newName);
             fd.append('categoria_id', newProductCategorySelect.value);
             addProductAdminBtn.disabled = true;
-            fetch('add_product_action.php', { method: 'POST', body: fd })
+            fetch('actions/add_product_action.php', { method: 'POST', body: fd })
                 .then(r => r.json())
                 .then(data => {
                     if (data.success) {
@@ -528,7 +528,7 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault();
             return;
         }
-        console.log("Tentativo di invio ordine a submit_order_action.php...");
+        console.log("Tentativo di invio ordine a actions/update_order_action.php...");
     });
 });
 </script>

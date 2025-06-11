@@ -215,7 +215,7 @@ if ($conn->connect_error) {
                                             </div>
                                             <?php if (empty($msg['risposta_utente']) && $ordine['stato_ordine'] !== 'Evaso'): ?>
                                                 <div class="chat-message user">
-                                                    <form class="bubble reply-form" action="reply_order_chat_action.php" method="POST">
+                                                    <form class="bubble reply-form" action="actions/reply_order_chat_action.php" method="POST">
                                                         <input type="hidden" name="id_messaggio" value="<?php echo $msg['id']; ?>">
                                                         <textarea name="risposta_utente" placeholder="La tua risposta..." required></textarea>
                                                         <button type="submit" class="nav-link-button">Invia</button>

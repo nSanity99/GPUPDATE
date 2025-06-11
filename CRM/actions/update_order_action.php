@@ -3,7 +3,7 @@ session_start();
 require_once __DIR__.'/../includes/db_config.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true || !isset($_SESSION['user_id'])) {
-    header('Location: i_miei_ordini.php?edit=error');
+    header('Location: ../i_miei_ordini.php?edit=error');
     exit;
 }
 
@@ -12,13 +12,13 @@ $prodotti_json = $_POST['prodotti_json'] ?? '[]';
 $prodotti = json_decode($prodotti_json, true);
 
 if (!$id_ordine || empty($prodotti) || !is_array($prodotti)) {
-    header('Location: i_miei_ordini.php?edit=error');
+    header('Location: ../i_miei_ordini.php?edit=error');
     exit;
 }
 
 $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
 if ($conn->connect_error) {
-    header('Location: i_miei_ordini.php?edit=error');
+    header('Location: ../i_miei_ordini.php?edit=error');
     exit;
 }
 
@@ -74,12 +74,12 @@ try {
 
     $conn->commit();
     $conn->close();
-    header('Location: i_miei_ordini.php?edit=success');
+    header('Location: ../i_miei_ordini.php?edit=success');
     exit;
 } catch (Exception $e) {
     $conn->rollback();
     $conn->close();
-    header('Location: i_miei_ordini.php?edit=error');
+    header('Location: ../i_miei_ordini.php?edit=error');
     exit;
 }
 ?>

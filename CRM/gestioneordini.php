@@ -490,7 +490,7 @@ document.addEventListener('DOMContentLoaded', function() {
         formData.append('order_id', orderId);
         formData.append('detail_id', detailId);
 
-        fetch('order_actions.php', {
+        fetch('actions/order_actions.php', {
             method: 'POST',
             body: formData
         })
@@ -556,7 +556,7 @@ document.addEventListener('DOMContentLoaded', function() {
         button.disabled = true;
         const fd = new FormData();
         fd.append('id_ordine', orderId);
-        fetch('unlock_order_action.php', { method: 'POST', body: fd })
+        fetch('actions/unlock_order_action.php', { method: 'POST', body: fd })
             .then(r => r.json())
             .then(data => {
                 if (data.success) {
@@ -580,7 +580,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const fd = new FormData();
         fd.append('id_ordine', id);
         fd.append('messaggio_admin', msg);
-        fetch('update_order_chat_action.php', {
+        fetch('actions/update_order_chat_action.php', {
             method: 'POST',
             body: fd
         }).then(r => r.json())

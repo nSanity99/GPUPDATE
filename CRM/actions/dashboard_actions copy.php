@@ -4,7 +4,7 @@ require_once __DIR__ . 'includes/db_config.php';
 
 // Sicurezza base
 if (!isset($_SESSION['loggedin']) || $_SESSION['ruolo'] !== 'admin' || $_SERVER["REQUEST_METHOD"] !== "POST") {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit;
 }
 
@@ -12,7 +12,7 @@ $form_action = $_POST['form_action'] ?? '';
 $conn = new mysqli($db_host, $db_user, $db_pass, $db_name, $db_port);
 if ($conn->connect_error) {
     $_SESSION['error_message_usermgmt'] = "Errore di connessione al database.";
-    header("Location: gestioneutenze.php");
+    header("Location: ../gestioneutenze.php");
     exit;
 }
 
@@ -66,7 +66,7 @@ elseif ($form_action === 'create_user_submit') {
 
     if (empty($username) || empty($password) || !in_array($ruolo, ['user', 'admin'])) {
         $_SESSION['error_message_usermgmt'] = "Username, password e ruolo sono obbligatori.";
-        header("Location: gestioneutenze.php?action=create_user");
+        header("Location: ../gestioneutenze.php?action=create_user");
         exit;
     }
 
@@ -76,10 +76,10 @@ elseif ($form_action === 'create_user_submit') {
 
     if ($stmt->execute()) {
         $_SESSION['success_message_usermgmt'] = "Nuovo utente '" . $username . "' creato con successo!";
-        header("Location: gestioneutenze.php?action=user_created");
+        header("Location: ../gestioneutenze.php?action=user_created");
     } else {
         $_SESSION['error_message_usermgmt'] = "Errore: l'username o l'email potrebbero già esistere.";
-        header("Location: gestioneutenze.php?action=create_user");
+        header("Location: ../gestioneutenze.php?action=create_user");
     }
     $stmt->close();
 }
@@ -90,7 +90,7 @@ elseif ($form_action === 'delete_user_submit') {
 
     if ($user_id_to_delete == $_SESSION['user_id']) {
         $_SESSION['error_message_usermgmt'] = "Non puoi eliminare il tuo stesso account.";
-        header("Location: gestioneutenze.php");
+        header("Location: ../gestioneutenze.php");
         exit;
     }
     
@@ -106,12 +106,12 @@ elseif ($form_action === 'delete_user_submit') {
     } else {
         $_SESSION['error_message_usermgmt'] = "ID utente non valido.";
     }
-    header("Location: gestioneutenze.php");
+    header("Location: ../gestioneutenze.php");
     exit;
 }
 
 else {
-    header("Location: dashboard.php");
+    header("Location: ../dashboard.php");
 }
 
 $conn->close();
