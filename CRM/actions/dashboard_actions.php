@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__.'/../includes/db_config.php';
+require_once __DIR__.'/../includes/config_db.php';
 
 // Sicurezza base
 if (!isset($_SESSION['loggedin']) || $_SESSION['ruolo'] !== 'admin' || $_SERVER["REQUEST_METHOD"] !== "POST") {

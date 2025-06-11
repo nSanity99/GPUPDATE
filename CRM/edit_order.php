@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once __DIR__.'/includes/db_config.php';
+require_once __DIR__.'/includes/config_db.php';
 
 // Verifica login
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true || !isset($_SESSION['user_id'])) {

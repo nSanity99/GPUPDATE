@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__.'/includes/db_config.php';
+require_once __DIR__.'/includes/config_db.php';
 
 // --- Blocco Sicurezza (invariato) ---
 ini_set('log_errors', 1); ini_set('error_log', 'C:/xampp/php_error.log'); error_reporting(E_ALL); ini_set('display_errors', 0);

@@ -2,7 +2,7 @@
 session_start();
 
 // Dettagli connessione DB (gli stessi usati negli altri file)
-require_once 'db_config.php';
+require_once __DIR__.'/../includes/config_db.php';
 
 // Log per il debug
 ini_set('log_errors', 1);
