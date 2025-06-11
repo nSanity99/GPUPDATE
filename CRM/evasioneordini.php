@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const formData = new FormData();
                 formData.append('detail_id', detailId);
 
-                fetch('evade_order_action.php', {
+                fetch('actions/evade_order_action.php', {
                     method: 'POST',
                     body: formData
                 })

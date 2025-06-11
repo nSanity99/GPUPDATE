@@ -257,7 +257,7 @@ if ($action === 'list_feedback' || strpos($action, 'user_') === 0) { // user_cre
                                     <td><?php echo htmlspecialchars($user['gruppo_lavoro'] ?? '-'); ?></td>
                                     <td><?php echo htmlspecialchars(date('d/m/Y H:i', strtotime($user['data_creazione']))); ?></td>
                                     <td class="actions-cell">
-                                        <a href="dashboard_actions.php<?php echo $user['id']; ?>#user-form-anchor" class="admin-button secondary">Modifica</a>
+                                        <a href="actions/dashboard_actions.php<?php echo $user['id']; ?>#user-form-anchor" class="admin-button secondary">Modifica</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -273,7 +273,7 @@ if ($action === 'list_feedback' || strpos($action, 'user_') === 0) { // user_cre
             <?php if ($action === 'create_user' || ($action === 'edit' && $user_to_edit)): ?>
                 <div class="form-container">
                     <h3><?php echo $action === 'create_user' ? 'Crea Nuovo Utente' : 'Modifica Utente: ' . htmlspecialchars($user_to_edit['username']); ?></h3>
-                    <form action="dashboard_actions.php" method="POST">
+                    <form action="actions/dashboard_actions.php" method="POST">
                         <?php if ($action === 'edit'): ?>
                             <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($user_to_edit['id']); ?>">
                         <?php endif; ?>
