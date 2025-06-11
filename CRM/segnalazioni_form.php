@@ -98,7 +98,7 @@ if (isset($_GET['status'])) {
                 </div>
             <?php endif; ?>
 
-            <form id="segnalazione-form" action="submit_segnalazione_action.php" method="POST">
+            <form id="segnalazione-form" action="actions/submit_segnalazione_action.php" method="POST">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="titolo">Oggetto / Titolo della Segnalazione</label>

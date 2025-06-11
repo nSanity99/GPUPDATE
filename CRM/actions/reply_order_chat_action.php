@@ -3,7 +3,7 @@ session_start();
 require_once __DIR__.'/../includes/db_config.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true || !isset($_SESSION['user_id'])) {
-    header('Location: i_miei_ordini.php?reply=error');
+    header('Location: ../i_miei_ordini.php?reply=error');
     exit;
 }
 
@@ -11,13 +11,13 @@ $id_messaggio = filter_input(INPUT_POST, 'id_messaggio', FILTER_VALIDATE_INT);
 $risposta = trim($_POST['risposta_utente'] ?? '');
 
 if (!$id_messaggio || $risposta === '') {
-    header('Location: i_miei_ordini.php?reply=error');
+    header('Location: ../i_miei_ordini.php?reply=error');
     exit;
 }
 
 $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
 if ($conn->connect_error) {
-    header('Location: i_miei_ordini.php?reply=error');
+    header('Location: ../i_miei_ordini.php?reply=error');
     exit;
 }
 
@@ -31,7 +31,7 @@ $stmt->close();
 
 if (!$row || $row['id_utente_richiedente'] != $_SESSION['user_id'] || !empty($row['risposta_utente'])) {
     $conn->close();
-    header('Location: i_miei_ordini.php?reply=error');
+    header('Location: ../i_miei_ordini.php?reply=error');
     exit;
 }
 
@@ -53,9 +53,9 @@ if ($success) {
 $conn->close();
 
 if ($success) {
-    header('Location: i_miei_ordini.php?reply=success');
+    header('Location: ../i_miei_ordini.php?reply=success');
 } else {
-    header('Location: i_miei_ordini.php?reply=error');
+    header('Location: ../i_miei_ordini.php?reply=error');
 }
 exit;
 ?>

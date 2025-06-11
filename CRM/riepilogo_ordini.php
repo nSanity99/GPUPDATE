@@ -193,17 +193,17 @@ if ($conn_ro->connect_error) {
                                 <div class="invoice-section">
                                     <?php if (!empty($ordine['fattura_file'])): ?>
                                         <p>Fattura: <a href="fatture/<?php echo rawurlencode($ordine['fattura_file']); ?>" target="_blank" class="nav-link-button">Download</a></p>
-                                        <form class="invoice-form" enctype="multipart/form-data" method="POST" action="upload_fattura_action.php">
+                                        <form class="invoice-form" enctype="multipart/form-data" method="POST" action="actions/upload_fattura_action.php">
                                             <input type="hidden" name="id_ordine" value="<?php echo $ordine['id_ordine']; ?>">
                                             <input type="file" name="fattura" accept="application/pdf">
                                             <button type="submit" class="admin-button secondary small">Aggiorna</button>
                                         </form>
-                                        <form class="delete-invoice-form" method="POST" action="delete_fattura_action.php" onsubmit="return confirm('Eliminare la fattura?');">
+                                        <form class="delete-invoice-form" method="POST" action="actions/delete_fattura_action.php" onsubmit="return confirm('Eliminare la fattura?');">
                                             <input type="hidden" name="id_ordine" value="<?php echo $ordine['id_ordine']; ?>">
                                             <button type="submit" class="admin-button secondary small">Elimina</button>
                                         </form>
                                     <?php else: ?>
-                                        <form class="invoice-form" enctype="multipart/form-data" method="POST" action="upload_fattura_action.php">
+                                        <form class="invoice-form" enctype="multipart/form-data" method="POST" action="actions/upload_fattura_action.php">
                                             <input type="hidden" name="id_ordine" value="<?php echo $ordine['id_ordine']; ?>">
                                             <input type="file" name="fattura" accept="application/pdf" required>
                                             <button type="submit" class="admin-button secondary small">Carica Fattura</button>
@@ -236,7 +236,7 @@ if ($conn_ro->connect_error) {
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 const fd = new FormData(form);
-                fetch('upload_fattura_action.php', { method: 'POST', body: fd })
+                fetch('actions/upload_fattura_action.php', { method: 'POST', body: fd })
                     .then(r => r.json()).then(() => location.reload());
             });
         });
@@ -246,7 +246,7 @@ if ($conn_ro->connect_error) {
                 e.preventDefault();
                 if (!confirm('Eliminare la fattura?')) return;
                 const fd = new FormData(form);
-                fetch('delete_fattura_action.php', { method: 'POST', body: fd })
+                fetch('actions/delete_fattura_action.php', { method: 'POST', body: fd })
                     .then(r => r.json()).then(() => location.reload());
             });
         });

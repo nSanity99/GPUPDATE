@@ -237,7 +237,7 @@ if ($conn->connect_error) {
                 formData.append('note_interne', noteInterne);
                 formData.append('messaggio_admin', messaggioAdmin);
 
-                fetch('update_segnalazione_action.php', {
+                fetch('actions/update_segnalazione_action.php', {
                     method: 'POST',
                     body: formData
                 })
